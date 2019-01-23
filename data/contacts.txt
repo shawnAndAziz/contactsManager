@@ -1,4 +1,5 @@
-Judy
-BoBandy
-Tristy
-Cheese_Puffs
+Name      |  Phone number
+Judy      |  5551234567
+BoBandy   |  1234567890
+Tristy    |  2345678901
+Jodi      |  3456789012
