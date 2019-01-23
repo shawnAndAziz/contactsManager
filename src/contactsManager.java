@@ -44,8 +44,23 @@ public class contactsManager
                     {
                         start();
                     }
+                } else if (userInput == 2)
+                {
+                    try {
+                        addContact();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println("Would you like to continue? yes or no");
+                        Input input = new Input();
+
+                        if (input.yesNo())
+                        {
+                            start();
+                        }
+                    }
                 }
-        }
 
         public static void viewContacts() throws IOException
         {
@@ -59,6 +74,26 @@ public class contactsManager
             {
                 System.out.println(contact);
             }
+
+        }
+
+        public static void addContact() throws IOException {
+            String azizPath = "/Users/azizalyahya/IdeaProjects/contactsManager/data";
+            String shawnPath = "/Users/makevio/IdeaProjects/contactsManager/data";
+            String contactsTextFile = "contacts.txt";
+            Input input = new Input();
+
+            Path contactsPath = Paths.get(azizPath, contactsTextFile);
+
+            List<String> contactsList = Files.readAllLines(contactsPath);
+            String contact = input.getString("Enter a new contact: ");
+            String number = input.getString("Enter there phone number: ");
+
+            String contactAndNum = contact + "     |     " + number;
+
+            contactsList.add(contactAndNum);
+
+            Files.write(contactsPath, contactsList);
 
         }
 
