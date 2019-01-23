@@ -1,3 +1,5 @@
+import Input.Input;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,6 +35,14 @@ public class contactsManager
                     {
                         System.out.println("haha");
                         e.printStackTrace();
+                    }
+
+                    System.out.println("Would you like to continue? yes or no");
+                    Input input = new Input();
+
+                    if (input.yesNo())
+                    {
+                        start();
                     }
                 }
         }
