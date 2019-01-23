@@ -14,8 +14,7 @@ public class contactsManager
     {
         start();
     }
-            public static void start()
-            {
+            public static void start() {
                 Scanner s = new Scanner(System.in).useDelimiter("\n");
 
                 System.out.println("1. View contacts.");
@@ -26,13 +25,10 @@ public class contactsManager
                 System.out.println("Enter an option (1, 2, 3, 4 or 5):");
                 int userInput = s.nextInt();
 
-                if (userInput == 1)
-                {
+                if (userInput == 1) {
                     try {
                         viewContacts();
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         System.out.println("haha");
                         e.printStackTrace();
                     }
@@ -40,12 +36,10 @@ public class contactsManager
                     System.out.println("Would you like to continue? yes or no");
                     Input input = new Input();
 
-                    if (input.yesNo())
-                    {
+                    if (input.yesNo()) {
                         start();
                     }
-                } else if (userInput == 2)
-                {
+                } else if (userInput == 2) {
                     try {
                         addContact();
                     } catch (IOException e) {
@@ -53,21 +47,35 @@ public class contactsManager
                     }
 
                     System.out.println("Would you like to continue? yes or no");
-                        Input input = new Input();
+                    Input input = new Input();
 
-                        if (input.yesNo())
-                        {
-                            start();
-                        }
+                    if (input.yesNo()) {
+                        start();
+                    }
+                } else if (userInput == 3) {
+                    try {
+                        findContact();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println("Would you like to continue? yes or no");
+                    Input input = new Input();
+
+                    if (input.yesNo()) {
+                        start();
                     }
                 }
+            }
 
-        public static void viewContacts() throws IOException
+
+    public static void viewContacts() throws IOException
         {
             String azizPath = "/Users/azizalyahya/IdeaProjects/contactsManager/data";
             String shawnPath = "/Users/makevio/IdeaProjects/contactsManager/data";
+            String contactsTextFile = "contacts.txt";
 
-            Path contactsPath = Paths.get(azizPath, "contacts.txt");
+            Path contactsPath = Paths.get(azizPath, contactsTextFile);
 
             List<String> contactsList = Files.readAllLines(contactsPath);
             for (String contact : contactsList)
@@ -89,11 +97,31 @@ public class contactsManager
             String contact = input.getString("Enter a new contact: ");
             String number = input.getString("Enter there phone number: ");
 
-            String contactAndNum = contact + "     |     " + number;
+            String contactAndNum = contact.toLowerCase() + "     |     " + number;
 
             contactsList.add(contactAndNum);
 
             Files.write(contactsPath, contactsList);
+
+        }
+
+        public static void findContact() throws IOException {
+            Input input = new Input();
+            String findContact = input.getString("What contact would you like to look up?");
+            String azizPath = "/Users/azizalyahya/IdeaProjects/contactsManager/data";
+            String contactsTextFile = "contacts.txt";
+            String shawnPath = "/Users/makevio/IdeaProjects/contactsManager/data";
+
+            Path contactsPath = Paths.get(azizPath, contactsTextFile);
+
+            List<String> contactsList = Files.readAllLines(contactsPath);
+            for (String contact : contactsList)
+            {
+                if (contact.contains(findContact.toLowerCase()))
+                    {
+                        System.out.println(contact);
+                    }
+            }
 
         }
 

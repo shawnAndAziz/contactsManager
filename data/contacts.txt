@@ -1,7 +1,8 @@
 Name      |  Phone number
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-Judy      |     5551234567
-BoBandy   |     1234567890
-Tristy    |     2345678901
-Jodi      |     3456789012
+judy      |     5551234567
+boBandy   |     1234567890
+tristy    |     2345678901
+jodi      |     3456789012
 shawn     |     6743876523657382
+bo jangles     |     2813308004
