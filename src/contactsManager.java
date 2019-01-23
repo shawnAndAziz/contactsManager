@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
-public class contactsManager {
-
-
+public class contactsManager
+{
             Scanner s = new Scanner(System.in).useDelimiter("\n");
-            public static void main(String[] args)
-            {
-                start();
-            }
 
-            public static void start() {
+    public static void main(String[] args)
+    {
+        start();
+    }
+            public static void start()
+            {
                 System.out.println("1. View contacts.");
                 System.out.println("2. Add a new contact.   ");
                 System.out.println("3. Search a contact by name.");
