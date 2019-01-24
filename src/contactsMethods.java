@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -100,13 +101,19 @@ public class contactsMethods {
         String contactsTextFile = "contacts.txt";
         Input input = new Input();
 
+
         Path contactsPath = Paths.get(azizPath, contactsTextFile);
 
         List<String> contactsList = Files.readAllLines(contactsPath);
         String contact = input.getString("Enter a new contact: ");
         String number = input.getString("Enter there phone number: ");
 
-        String contactAndNum = contact.toLowerCase() + "     |     " + number;
+        Person person = new Person(contact, number);
+        System.out.println(person);
+        HashMap<String, String> contactsHashMap = new HashMap<>();
+        contactsHashMap.put(contact, number);
+
+        String contactAndNum = person.getName() + "     |     " + person.getNumber();
 
         contactsList.add(contactAndNum);
 
